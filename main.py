@@ -3,6 +3,7 @@ import geocoder
 def main():
     location = input('Please enter location you would like data on (city, state): ')
     get_coordinates = getCoordinates(location)
+    return location
 
 
 def getCoordinates(location):
