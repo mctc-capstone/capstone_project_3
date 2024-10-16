@@ -22,7 +22,7 @@ def get_air_pollution(coordinates: list) -> int:
         int: The location's Air Quality Index.
 
     Raises:
-        HTTPError: If the HTTP request was unsuccessful.
+        AirPollutionAPIError: If the HTTP request was unsuccessful.
     """
 
     endpoint = "http://api.openweathermap.org/data/2.5/air_pollution"
