@@ -2,6 +2,13 @@ import requests
 import os
 
 
+class AirPollutionAPIError(Exception):
+    """Raised when requests made to the air pollution API are unsuccessful."""
+
+    def __init__(self, msg):
+        self.msg = msg
+
+
 def get_air_pollution(coordinates: list) -> int:
     """
     Returns the Air Quality Index for a given set of coordinates from
@@ -28,6 +35,9 @@ def get_air_pollution(coordinates: list) -> int:
     response = requests.get(endpoint, params=payload)
 
     # will raise an HTTPError if the request was unsuccessful
-    response.raise_for_status()
+    try:
+        response.raise_for_status()
+    except requests.HTTPError:
+        raise AirPollutionAPIError
 
     return response.json()["list"][0]["main"]["aqi"]
