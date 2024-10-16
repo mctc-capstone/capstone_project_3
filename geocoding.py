@@ -28,4 +28,4 @@ def getCoordinates(location: str) -> list:
     if coordinates is not None:
         return coordinates
     else:
-        raise LocationNotFoundError('No coordinates found for location "{location}".')
+        raise LocationNotFoundError(f'No coordinates found for location "{location}".')
